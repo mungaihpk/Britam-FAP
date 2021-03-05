@@ -41,8 +41,13 @@ public class CreateQuotePageElements {
 	private WebElement add_member_button;
 
 	private WebElement sum_insured_input;
+	
+	private WebElement get_benefits_button;
+	
+	WebDriver driver;
 
 	public CreateQuotePageElements(WebDriver driver) {
+		this.driver = driver;
 		create_quote_button = driver.findElement(By.xpath("//a[text()='Create Quote']"));
 		line_of_business_dropdown = driver
 				.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_lob']"));
@@ -234,6 +239,11 @@ public class CreateQuotePageElements {
 
 	public WebElement getMiddlenameInput() {
 		return middlename_input;
+	}
+
+	public WebElement getGetBenefitsButton() {
+		get_benefits_button = driver.findElement(By.xpath("//button[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_get_riders']"));
+		return get_benefits_button;
 	}
 
 }
