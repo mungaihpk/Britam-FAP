@@ -13,24 +13,26 @@ public class ProposalsPageElements {
 	private WebElement start_date_datepicker;
 	private WebElement proposals_table_rows;
 	private WebElement start_date_input;
-	
 
 	public ProposalsPageElements(WebDriver driver) {
 		this.driver = driver;
 	}
 
 	public WebElement getStartDateDatepicker() {
-		start_date_datepicker = driver.findElement(By.xpath("//*/div[@class='datepicker-container datepicker-dropdown datepicker-top-left']/div[@class='datepicker-panel']/ul[@data-view='years']/li[text()='2017']"));
+		start_date_datepicker = driver.findElement(By.xpath(
+				"//*/div[@class='datepicker-container datepicker-dropdown datepicker-top-left']/div[@class='datepicker-panel']/ul[@data-view='years']/li[text()='2017']"));
 		return start_date_datepicker;
 	}
 
 	public WebElement getSearchButton() {
-		search_button = driver.findElement(By.xpath("//*/div/button[@id='_QuoteProposal_INSTANCE_AgH3Csq73s0c_searchProposalBtn']"));
+		search_button = driver
+				.findElement(By.xpath("//*/div/button[@id='_QuoteProposal_INSTANCE_AgH3Csq73s0c_searchProposalBtn']"));
 		return search_button;
 	}
 
 	public WebElement getResetButton() {
-		reset_button = driver.findElement(By.xpath("//*/div/button[@id='_QuoteProposal_INSTANCE_AgH3Csq73s0c_resetProposalBtn']"));	
+		reset_button = driver
+				.findElement(By.xpath("//*/div/button[@id='_QuoteProposal_INSTANCE_AgH3Csq73s0c_resetProposalBtn']"));
 		return reset_button;
 	}
 
@@ -49,7 +51,8 @@ public class ProposalsPageElements {
 	}
 
 	public void setProposalsTableRows() {
-		proposals_table_rows = driver.findElement(By.xpath("//table[@id='_QuoteProposal_INSTANCE_AgH3Csq73s0c_proposal_result_table']/tbody/tr"));
+		proposals_table_rows = driver.findElement(
+				By.xpath("//table[@id='_QuoteProposal_INSTANCE_AgH3Csq73s0c_proposal_result_table']/tbody/tr"));
 	}
 
 	public WebElement getStartDateInput() {
