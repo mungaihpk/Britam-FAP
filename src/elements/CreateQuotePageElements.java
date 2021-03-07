@@ -3,14 +3,15 @@ package elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class CreateQuotePageElements {
 	private WebElement create_quote_button;
-	private WebElement line_of_business_dropdown;
+	private Select line_of_business_dropdown;
 	private WebElement insured_dob_input;
 	private WebElement start_date_input;
-	private WebElement category_dropdown;
-	private WebElement product_dropdown;
+	private Select category_dropdown;
+	private Select product_dropdown;
 	private WebElement existing_customer_radio;
 	private WebElement new_customer_radio;
 	private WebElement nationalid_input;
@@ -29,18 +30,21 @@ public class CreateQuotePageElements {
 	private WebElement phonenumber_input;
 	private WebElement email_input;
 	private WebElement dob_input;
-	private WebElement gender_dropdown;
+	private Select gender_dropdown;
 	private WebElement smoker_yes_radio;
 	private WebElement smoker_no_radio;
-	private WebElement occupation_dropdown;
+	private Select occupation_dropdown;
+	
+	private WebElement calculate_sum_assured_radio;
+	private WebElement calculate_premium_radio;
 
 	private WebElement premium_input;
-	private WebElement frequency_dropdown;
-	private WebElement terms_dropdown;
+	private Select frequency_dropdown;
+	private Select terms_dropdown;
 
 	private WebElement add_member_button;
 
-	private WebElement sum_insured_input;
+	private WebElement sum_assured_input;
 
 	private WebElement get_benefits_button;
 
@@ -56,9 +60,9 @@ public class CreateQuotePageElements {
 		return create_quote_button;
 	}
 
-	public WebElement getLineOfBusinessDropdown() {
-		line_of_business_dropdown = driver
-				.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_lob']"));
+	public Select getLineOfBusinessDropdown() {
+		line_of_business_dropdown = new Select(driver
+				.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_lob']")));
 		return line_of_business_dropdown;
 	}
 
@@ -74,15 +78,14 @@ public class CreateQuotePageElements {
 		return start_date_input;
 	}
 
-	public WebElement getCategoryDropdown() {
-		category_dropdown = driver
-				.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_category']"));
+	public Select getCategoryDropdown() {
+		category_dropdown = new Select(driver.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_category']")));
 		return category_dropdown;
 	}
 
-	public WebElement getProductDropdown() {
-		product_dropdown = driver
-				.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_product']"));
+	public Select getProductDropdown() {
+		product_dropdown = new Select(driver
+				.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_product']")));
 		return product_dropdown;
 	}
 
@@ -174,9 +177,9 @@ public class CreateQuotePageElements {
 		return dob_input;
 	}
 
-	public WebElement getGenderDropdown() {
-		gender_dropdown = driver
-				.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_gender_insured']"));
+	public Select getGenderDropdown() {
+		gender_dropdown = new Select(driver
+				.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_gender_insured']")));
 		return gender_dropdown;
 	}
 
@@ -193,9 +196,9 @@ public class CreateQuotePageElements {
 		return smoker_no_radio;
 	}
 
-	public WebElement getOccupationDropdown() {
-		occupation_dropdown = driver
-				.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_occupation_insured']"));
+	public Select getOccupationDropdown() {
+		occupation_dropdown = new Select(driver
+				.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_occupation_insured']")));
 		return occupation_dropdown;
 	}
 
@@ -209,21 +212,21 @@ public class CreateQuotePageElements {
 		return premium_input;
 	}
 
-	public WebElement getFrequencyDropdown() {
-		frequency_dropdown = driver
-				.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_frequency']"));
+	public Select getFrequencyDropdown() {
+		frequency_dropdown = new Select(driver
+				.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_frequency']")));
 		return frequency_dropdown;
 	}
 
-	public WebElement getTermsDropdown() {
-		terms_dropdown = driver.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_terms']"));
+	public Select getTermsDropdown() {
+		terms_dropdown = new Select(driver.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_terms']")));
 		return terms_dropdown;
 	}
 
-	public WebElement getSumInsuredInput() {
-		sum_insured_input = driver
+	public WebElement getSumAssuredInput() {
+		sum_assured_input = driver
 				.findElement(By.xpath("//input[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_premium']"));
-		return sum_insured_input;
+		return sum_assured_input;
 	}
 
 	public WebElement getMiddlenameInput() {
@@ -236,6 +239,16 @@ public class CreateQuotePageElements {
 		get_benefits_button = driver
 				.findElement(By.xpath("//button[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_get_riders']"));
 		return get_benefits_button;
+	}
+
+	public WebElement getCalculateSumAssuredRadio() {
+		calculate_sum_assured_radio = driver.findElement(By.xpath("//input[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_assured-type']"));
+		return calculate_sum_assured_radio;
+	}
+
+	public WebElement getCalculatePremiumRadio() {
+		calculate_premium_radio= driver.findElement(By.xpath("//input[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_premium-type']"));
+		return calculate_premium_radio;
 	}
 
 }

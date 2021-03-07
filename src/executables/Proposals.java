@@ -20,6 +20,12 @@ public class Proposals {
 		homePageElements = new HomePageElements(driver);
 	}
 	
+	public void navigateToProposalsPage() {
+		homePageElements.getProposalsLink().click();
+		WebDriverWait wait = new WebDriverWait(driver, 100);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*/div/button[@id='_QuoteProposal_INSTANCE_AgH3Csq73s0c_searchProposalBtn']")));
+	}
+	
 	public void retrieveProposals() {
 		//proposals_link = driver.findElement(By.xpath(
 		//		"//div[@class='navbar' and @id='navbar_com_liferay_site_navigation_menu_web_portlet_SiteNavigationMenuPortlet']/ul[@role='menubar']/li/a/span[text()=' Proposals ']"));
