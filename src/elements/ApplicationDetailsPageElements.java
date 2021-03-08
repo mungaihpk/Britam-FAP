@@ -34,6 +34,8 @@ public class ApplicationDetailsPageElements {
 
 	private WebElement save_proposal_button;
 	private WebElement proceed_button;
+	
+	private WebElement file_upload_input;
 
 	public ApplicationDetailsPageElements(WebDriver driver) {
 		this.driver = driver;
@@ -181,6 +183,12 @@ public class ApplicationDetailsPageElements {
 		proceed_button = driver
 				.findElement(By.xpath("//button[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_submit_quote']"));
 		return proceed_button;
+	}
+
+	public WebElement getFileUploadInput() {
+		file_upload_input = driver
+				.findElement(By.xpath("//input[@id='fileUpload1']"));
+		return file_upload_input;
 	}
 
 }

@@ -162,11 +162,8 @@ public class CreateQuote {
 		proceed_button.click();
 	}
 	
-	public void applicationDetailsPage() {
+	public void setApplicationDetails() {
 		applicationDetailsPageElements = new ApplicationDetailsPageElements(driver);
-		
-		
-		payment_method_dropdown = 
 		
 	}
 	
@@ -195,9 +192,7 @@ public class CreateQuote {
 		
 		payment_collection_day_dropdown = proposalPaymentsPageElements.getCollectionDayDropdown();
 		payment_collection_day_dropdown.selectByVisibleText(String.valueOf(quote.getPaymentCollectionDay()));
-		
-		
-		
+			
 	}
 
 	public Quote prepareQuote() {

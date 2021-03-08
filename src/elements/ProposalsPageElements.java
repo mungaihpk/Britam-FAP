@@ -3,6 +3,7 @@ package elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class ProposalsPageElements {
 	private WebDriver driver;
@@ -13,6 +14,7 @@ public class ProposalsPageElements {
 	private WebElement start_date_datepicker;
 	private WebElement proposals_table_rows;
 	private WebElement start_date_input;
+	private Select status_dropdown;
 
 	public ProposalsPageElements(WebDriver driver) {
 		this.driver = driver;
@@ -58,5 +60,10 @@ public class ProposalsPageElements {
 	public WebElement getStartDateInput() {
 		start_date_input = driver.findElement(By.xpath("//input[@id='_QuoteProposal_INSTANCE_AgH3Csq73s0c_fromDate']"));
 		return start_date_input;
+	}
+	
+	public Select getStatusDropdown() {
+		status_dropdown = new Select(driver.findElement(By.xpath("//select[@id='_QuoteProposal_INSTANCE_AgH3Csq73s0c_statusSearchProposal']")));
+		return status_dropdown;
 	}
 }
