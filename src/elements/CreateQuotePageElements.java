@@ -17,6 +17,7 @@ public class CreateQuotePageElements {
 	private WebElement nationalid_input;
 	private WebElement search_id_button;
 	private WebElement reset_id_button;
+	private WebElement get_quote_button;
 
 	private WebElement birth_certificate_input;
 	private WebElement surname_input;
@@ -34,7 +35,7 @@ public class CreateQuotePageElements {
 	private WebElement smoker_yes_radio;
 	private WebElement smoker_no_radio;
 	private Select occupation_dropdown;
-	
+
 	private WebElement calculate_sum_assured_radio;
 	private WebElement calculate_premium_radio;
 
@@ -61,8 +62,8 @@ public class CreateQuotePageElements {
 	}
 
 	public Select getLineOfBusinessDropdown() {
-		line_of_business_dropdown = new Select(driver
-				.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_lob']")));
+		line_of_business_dropdown = new Select(
+				driver.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_lob']")));
 		return line_of_business_dropdown;
 	}
 
@@ -79,13 +80,14 @@ public class CreateQuotePageElements {
 	}
 
 	public Select getCategoryDropdown() {
-		category_dropdown = new Select(driver.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_category']")));
+		category_dropdown = new Select(
+				driver.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_category']")));
 		return category_dropdown;
 	}
 
 	public Select getProductDropdown() {
-		product_dropdown = new Select(driver
-				.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_product']")));
+		product_dropdown = new Select(
+				driver.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_product']")));
 		return product_dropdown;
 	}
 
@@ -178,8 +180,8 @@ public class CreateQuotePageElements {
 	}
 
 	public Select getGenderDropdown() {
-		gender_dropdown = new Select(driver
-				.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_gender_insured']")));
+		gender_dropdown = new Select(
+				driver.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_gender_insured']")));
 		return gender_dropdown;
 	}
 
@@ -213,13 +215,14 @@ public class CreateQuotePageElements {
 	}
 
 	public Select getFrequencyDropdown() {
-		frequency_dropdown = new Select(driver
-				.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_frequency']")));
+		frequency_dropdown = new Select(
+				driver.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_frequency']")));
 		return frequency_dropdown;
 	}
 
 	public Select getTermsDropdown() {
-		terms_dropdown = new Select(driver.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_terms']")));
+		terms_dropdown = new Select(
+				driver.findElement(By.xpath("//select[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_terms']")));
 		return terms_dropdown;
 	}
 
@@ -242,13 +245,25 @@ public class CreateQuotePageElements {
 	}
 
 	public WebElement getCalculateSumAssuredRadio() {
-		calculate_sum_assured_radio = driver.findElement(By.xpath("//input[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_assured-type']"));
+		calculate_sum_assured_radio = driver
+				.findElement(By.xpath("//input[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_assured-type']"));
 		return calculate_sum_assured_radio;
 	}
 
 	public WebElement getCalculatePremiumRadio() {
-		calculate_premium_radio= driver.findElement(By.xpath("//input[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_premium-type']"));
+		calculate_premium_radio = driver
+				.findElement(By.xpath("//input[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_premium-type']"));
 		return calculate_premium_radio;
+	}
+
+	public WebElement getGetQuoteButton() {
+		return get_quote_button;
+	}
+
+	public void setGet_quote_button(WebElement get_quote_button) {
+		get_quote_button = driver
+				.findElement(By.xpath("//button[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_get_quote']"));
+		this.get_quote_button = get_quote_button;
 	}
 
 }

@@ -40,6 +40,19 @@ public class Quote {
 	private String city;
 	private String country;
 	private List<String> communication_mode_email;
+	
+	private String payment_method;
+	private String payment_bank;
+	private String payment_bank_branch;
+	private String payment_bank_account_number;
+	private String payment_processing_bank;
+	private int payment_collection_day;
+	private String payment_date;
+	private String benefit_payment_method;
+	private String benefit_bank;
+	private String benefit_branch;
+	private String benefit_account_number;
+	
 
 	public Quote() {
 
@@ -291,6 +304,94 @@ public class Quote {
 
 	public void setPhoneNumber(String phone_number) {
 		this.phone_number = phone_number;
+	}
+
+	public String getPaymentMethod() {
+		return payment_method;
+	}
+
+	public void setPaymentMethod(String payment_method) {
+		this.payment_method = payment_method;
+	}
+
+	public String getPaymentBank() {
+		return payment_bank;
+	}
+
+	public void setPaymentBank(String payment_bank) {
+		this.payment_bank = payment_bank;
+	}
+
+	public String getPaymentBankBranch() {
+		return payment_bank_branch;
+	}
+
+	public void setPaymentBankBranch(String payment_bank_branch) {
+		this.payment_bank_branch = payment_bank_branch;
+	}
+
+	public String getPaymentBankAccountNumber() {
+		return payment_bank_account_number;
+	}
+
+	public void setPaymentBankAccountNumber(String payment_bank_account_number) {
+		this.payment_bank_account_number = payment_bank_account_number;
+	}
+
+	public String getPaymentProcessingBank() {
+		return payment_processing_bank;
+	}
+
+	public void setPaymentProcessingBank(String payment_processing_bank) {
+		this.payment_processing_bank = payment_processing_bank;
+	}
+
+	public int getPaymentCollectionDay() {
+		return payment_collection_day;
+	}
+
+	public void setPaymentCollectionDay(int payment_collection_day) {
+		this.payment_collection_day = payment_collection_day;
+	}
+
+	public String getPaymentDate() {
+		return payment_date;
+	}
+
+	public void setPaymentDate(String payment_date) {
+		this.payment_date = payment_date;
+	}
+
+	public String getBenefitPaymentMethod() {
+		return benefit_payment_method;
+	}
+
+	public void setBenefitPaymentMethod(String benefit_payment_method) {
+		this.benefit_payment_method = benefit_payment_method;
+	}
+
+	public String getBenefitBank() {
+		return benefit_bank;
+	}
+
+	public void setBenefitBank(String benefit_bank) {
+		this.benefit_bank = benefit_bank;
+	}
+
+	public String getBenefitBankBranch() {
+		return benefit_branch;
+	}
+
+	public void setBenefitBankBranch(String benefit_branch) {
+		this.benefit_branch = benefit_branch;
+	}
+
+	public String getBenefitBankAccountNumber() {
+		return benefit_account_number;
+	}
+
+	public void setBenefitBankAccountNumber(String benefit_account_number) {
+		this.benefit_account_number = benefit_account_number;
 	}
 
 }

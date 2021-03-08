@@ -12,18 +12,26 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import elements.ApplicationDetailsPageElements;
 import elements.CreateQuotePageElements;
+import elements.ProposalPaymentsPageElements;
+import elements.ReviewQuotePageElements;
 import variables.Quote;
 
 public class CreateQuote {
 	WebDriver driver;
-	WebElement create_quote_button, get_benefits_button;
-	WebElement insured_dob_input, firstname_input, middlename_input, lastname_input, phonenumber_input, email_input, date_of_birth_input, premium_input, sum_assured_input;
+	WebElement create_quote_button, get_benefits_button, get_quote_button, proceed_button;
+	WebElement insured_dob_input, firstname_input, middlename_input, lastname_input, phonenumber_input, email_input, date_of_birth_input, premium_input, sum_assured_input, payment_bank_account_number_input;
 	WebElement smoker_yes_radio, smoker_no_radio, calculate_sum_assured_radio, calculate_premium_radio;
-	Select line_of_business_dropdown, category_dropdown, product_dropdown, gender_dropdown, occupation_dropdown, frequency_dropdown, terms_dropdown;
+	Select line_of_business_dropdown, category_dropdown, product_dropdown, gender_dropdown, occupation_dropdown, frequency_dropdown, terms_dropdown, payment_method_dropdown, payment_bank_dropdown, payment_bank_branch_dropdown, payment_bank_account_number_dropdown, payment_dd_processing_bank_dropdown, payment_collection_day_dropdown, benefit_payment_method, benefit_bank_dropdown, benefit_bank_branch_dropdown, benefit_bank_account_number_dropdown;
 	
 	CreateQuotePageElements createQuotePageElements;
+	ReviewQuotePageElements reviewQuotePageElements;
+	ApplicationDetailsPageElements applicationDetailsPageElements;
+	ProposalPaymentsPageElements proposalPaymentsPageElements;
 	Proposals proposals;
+	
+	Quote quote;
 
 	public CreateQuote(WebDriver driver) {
 		this.driver = driver;
@@ -47,7 +55,7 @@ public class CreateQuote {
 		
 		createQuotePageElements = new CreateQuotePageElements(driver);
 		
-		Quote quote = prepareQuote();
+		quote = prepareQuote();
 		line_of_business_dropdown = createQuotePageElements.getLineOfBusinessDropdown();
 		line_of_business_dropdown.selectByVisibleText(quote.getLineOfBusiness());
 		
@@ -136,6 +144,60 @@ public class CreateQuote {
 		
 		get_benefits_button = createQuotePageElements.getGetBenefitsButton();
 		get_benefits_button.click();
+		
+		wait.until(ExpectedConditions
+				.presenceOfElementLocated(By.xpath("//button[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_get_quote']")));
+		get_quote_button = createQuotePageElements.getGetBenefitsButton();
+		get_quote_button.click();
+	}
+	
+	public void reviewQuote() {
+		reviewQuotePageElements = new ReviewQuotePageElements(driver);
+		
+		WebDriverWait wait = new WebDriverWait(driver, 200);
+		wait.until(ExpectedConditions
+				.presenceOfElementLocated(By.xpath("//button[@id='_QuoteCalculator_INSTANCE_ms03ctkSkfxq_create_proposal']")));
+		
+		proceed_button = reviewQuotePageElements.getProceedButton();
+		proceed_button.click();
+	}
+	
+	public void applicationDetailsPage() {
+		applicationDetailsPageElements = new ApplicationDetailsPageElements(driver);
+		
+		
+		payment_method_dropdown = 
+		
+	}
+	
+	public void setPaymentInfo() {
+		proposalPaymentsPageElements = new ProposalPaymentsPageElements(driver);
+		
+		WebDriverWait wait = new WebDriverWait(driver, 200);
+		wait.until(ExpectedConditions
+				.presenceOfElementLocated(By.xpath("_QuoteCalculator_INSTANCE_ms03ctkSkfxq_payment-method_initial")));
+		
+		payment_method_dropdown = proposalPaymentsPageElements.getPaymentMethodDropdown();
+		payment_method_dropdown.selectByVisibleText(quote.getPaymentMethod());
+		
+		payment_bank_dropdown = proposalPaymentsPageElements.getBankDropdown();
+		payment_bank_dropdown.selectByVisibleText(quote.getPaymentBank());
+		
+		payment_bank_branch_dropdown = proposalPaymentsPageElements.getBranchDropdown();
+		payment_bank_branch_dropdown.selectByVisibleText(quote.getPaymentBankBranch());
+		
+		payment_bank_account_number_input = proposalPaymentsPageElements.getAccountNumberInput();
+		payment_bank_account_number_input.clear();
+		payment_bank_account_number_input.sendKeys(quote.getPaymentBankAccountNumber());
+		
+		payment_dd_processing_bank_dropdown = proposalPaymentsPageElements.getDdProcessingBankDropdown();
+		payment_dd_processing_bank_dropdown.selectByVisibleText(quote.getPaymentProcessingBank());
+		
+		payment_collection_day_dropdown = proposalPaymentsPageElements.getCollectionDayDropdown();
+		payment_collection_day_dropdown.selectByVisibleText(String.valueOf(quote.getPaymentCollectionDay()));
+		
+		
+		
 	}
 
 	public Quote prepareQuote() {
@@ -186,6 +248,25 @@ public class CreateQuote {
 				quote.setPremium(Double.valueOf(quote_entry[16]));
 				quote.setFrequency(quote_entry[17]);
 				quote.setTerms(Integer.valueOf(quote_entry[18]));
+				quote.setNationalId(quote_entry[19]);
+				quote.setPin(quote_entry[20]);
+				quote.setSourceOfFunds(quote_entry[21]);
+				quote.setNationality(quote_entry[22]);
+				quote.setPostalAddress(quote_entry[23]);
+				quote.setPostalCode(quote_entry[24]);
+				quote.setCity(quote_entry[25]);
+				quote.setCountry(quote_entry[26]);
+				quote.setPaymentMethod(quote_entry[27]);
+				quote.setPaymentBank(quote_entry[28]);
+				quote.setPaymentBankBranch(quote_entry[29]);
+				quote.setPaymentBankAccountNumber(quote_entry[30]);
+				quote.setPaymentProcessingBank(quote_entry[31]);
+				quote.setPaymentCollectionDay(Integer.getInteger(quote_entry[32]));
+				quote.setPaymentDate(quote_entry[34]);
+				quote.setBenefitPaymentMethod(quote_entry[35]);
+				quote.setBenefitBank(quote_entry[36]);
+				quote.setBenefitBankBranch(quote_entry[37]);
+				quote.setBenefitBankAccountNumber(quote_entry[38]);
 			}
 			bufferedReader.close();
 		} catch (IOException e) {
